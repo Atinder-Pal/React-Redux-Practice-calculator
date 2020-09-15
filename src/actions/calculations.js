@@ -11,4 +11,4 @@ const addNewCalculation = (newCalculation) => {
     };
 }
 
-export default addNewCalculation;
+export { addNewCalculation };
