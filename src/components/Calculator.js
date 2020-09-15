@@ -47,7 +47,7 @@ function Calculator(props)
         setNewInputs({newInput1: newInputs.newInput1,newInput2: newInputs.newInput2, newOperation: e.target.value});
     }
     const [result, setNewResult] = useState( 0 );
-
+    
     const [ newCalculation, setNewCalculation ] = useState( {newInput1: '', newOperation: '+', newInput2: '', result: 0});
     
 
@@ -57,6 +57,7 @@ function Calculator(props)
        
         setNewInputs( newInputs );     
         setNewResult(mathCalculation(newInputs.newInput1, newInputs.newInput2, newInputs.newOperation));
+        //Updating newcalculation variable to the new inputs and result 
         setNewCalculation( newInputs, result );
                 
         //Clear the input fields
