@@ -7,7 +7,7 @@ const calculationsReducer = (state = [], action ) => {
 
         case 'ADD_NEW_CALCULATION':
             const newCalculation = {
-                calculation: action.payload,
+                inputs: action.payload,
                 result: action.result
             }
         //Create copy of original state Array to get previous calculaton History in our new Array

@@ -48,16 +48,18 @@ function Calculator( props )
     const updateOperation = e =>{
         setNewInputs({newInput1: newInputs.newInput1,newInput2: newInputs.newInput2, newOperation: e.target.value});
     }
+    
     const [result, setNewResult] = useState( 0 );    
   
-    
+    useEffect( () =>{
+        setNewResult(mathCalculation(newInputs.newInput1, newInputs.newInput2, newInputs.newOperation));
+    }, [newInputs]
+     )
       
     //Defining Function for "onSubmit" form event
     const doCalculation = ( e ) => {
-        e.preventDefault();    
-       
-        setNewResult(mathCalculation(newInputs.newInput1, newInputs.newInput2, newInputs.newOperation));  
-
+        e.preventDefault();        
+         
         //adding action to add calculation performed to our store
         props.dispatch( addNewCalculation( newInputs, result ) );
                 
@@ -92,7 +94,7 @@ function Calculator( props )
 
                 <input type= 'submit' id='calculate'value='Result'/>
                 <p >
-                    <strong> {result} </strong>
+                    <strong> {props.result} </strong>
                 </p>
                 
             </form>
