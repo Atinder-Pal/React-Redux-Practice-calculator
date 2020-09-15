@@ -1,3 +1,10 @@
+## Calculator app using React-Redux
+
+**Purpose:** To perform operations like addition, subtraction, multiplication and division on two operands and display the result <br />
+**Author:** Atinder Pal <br />
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +73,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+**Link to Trello Board:** https://trello.com/b/XNMkkW8h/react-redux-assignment-calculator
