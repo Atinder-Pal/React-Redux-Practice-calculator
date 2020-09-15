@@ -4,9 +4,9 @@ import './index.css';
 import Calculator from './components/Calculator';
 import { createStore } from 'redux';
 import calculationsReducer from './reducers/calculations';
-import { addNewCalculation } from './actions/calculations';
 import { Provider } from 'react-redux';
-
+import CalculationsHistory from './components/CalculationsHistory';
+import SingleFieldCalculator from './components/SingleFieldCalculator';
 
 
 // Create store  and pass our calculationsReducer to it so it knows how to handle actions
@@ -23,14 +23,17 @@ calculationsStore.subscribe( () => console.log( calculationsStore.getState() ));
  */
 // Dispatch expects a properly formatted action...
 // (otherwise your reducer won't know what to do!)
-calculationsStore.dispatch( addNewCalculation( "Research Redux" ) );
-calculationsStore.dispatch( addNewCalculation( "Review React" ) );
+// calculationsStore.dispatch( addNewCalculation( "Research Redux" ) );
+// calculationsStore.dispatch( addNewCalculation( "Review React" ) );
 
 
 ReactDOM.render(
-  <Provider store = {calculationsStore}>
-    <Calculator heading="Welcome to Math Buddy"/>
-  </Provider>,
+   <Provider store = {calculationsStore}>
+      {/* <Calculator heading="Welcome to Math Buddy"/>
+      <CalculationsHistory /> */}
+      <SingleFieldCalculator heading="Welcome to Math Buddy"/>
+      <CalculationsHistory />
+   </Provider>,  
   document.getElementById('root')
 );
 

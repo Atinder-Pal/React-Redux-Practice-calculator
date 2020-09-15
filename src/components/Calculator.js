@@ -94,7 +94,7 @@ function Calculator( props )
 
                 <input type= 'submit' id='calculate'value='Result'/>
                 <p >
-                    <strong> {props.result} </strong>
+                    <strong> Result: {result} </strong>
                 </p>
                 
             </form>
