@@ -50,18 +50,19 @@ function Calculator( props )
     }
     
     const [result, setNewResult] = useState( 0 );    
-  
-    useEffect( () =>{
-        setNewResult(mathCalculation(newInputs.newInput1, newInputs.newInput2, newInputs.newOperation));
-    }, [newInputs]
-     )
+    let newResult = 0;
+    // useEffect( () =>{
+    //     setNewResult(mathCalculation(newInputs.newInput1, newInputs.newInput2, newInputs.newOperation));
+    // }, [newInputs]
+    //  )
       
     //Defining Function for "onSubmit" form event
     const doCalculation = ( e ) => {
         e.preventDefault();        
-         
+        newResult = (mathCalculation(newInputs.newInput1, newInputs.newInput2, newInputs.newOperation));
+        setNewResult( newResult );
         //adding action to add calculation performed to our store
-        props.dispatch( addNewCalculation( newInputs, result ) );
+        props.dispatch( addNewCalculation( newInputs, newResult) );
                 
         //Clear the input fields
         setNewInputs(  {newInput1: '',newInput2: '', newOperation: newInputs.newOperation} );        

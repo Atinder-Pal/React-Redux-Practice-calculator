@@ -129,28 +129,27 @@ function SingleFieldCalculator(props)
     //update state of result variable using useState()
     const [newResult, setNewResult] = useState( '' );
 
-    useEffect(() => {
-        props.dispatch( addNewCalculation(newExpression, newResult));
-        //Clear the input field 
-        setNewExpression( '' );
-    },[newResult])
+    
 
     //Defining Function for "onSubmit" form event
     const doCalculation = ( e ) => {
         e.preventDefault();
-        //Passing new value to setNewExpression to update the state of input expression
-        setNewExpression(newExpression);
+        let result= 0;
 
         if(validateInput( newExpression ))
         {
-            setNewResult(mathCalculation( newExpression ));
-            // //Clear the input field 
-            // setNewExpression( '' );
+            result = mathCalculation( newExpression );
+            setNewResult(result);
+            props.dispatch( addNewCalculation(newExpression, result));
+            //Clear the input field 
+            setNewExpression( '' );
+            
         }
         else{
             alert("invalid operation: Format expected: operand1 operator operand2");
         }            
     }
+ 
 
     return ( 
         <>

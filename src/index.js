@@ -17,14 +17,7 @@ const calculationsStore = createStore( calculationsReducer,
 
   // Just to test if store is getting updated
 calculationsStore.subscribe( () => console.log( calculationsStore.getState() ));
-/**
- * Redux Dispatch
- * This is what we use to send actions to our store's reducer.
- */
-// Dispatch expects a properly formatted action...
-// (otherwise your reducer won't know what to do!)
-// calculationsStore.dispatch( addNewCalculation( "Research Redux" ) );
-// calculationsStore.dispatch( addNewCalculation( "Review React" ) );
+
 
 
 ReactDOM.render(
