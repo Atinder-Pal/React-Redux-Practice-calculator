@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { addNewCalculation } from '../actions/calculations';
 // import './reset.css';
 
 
@@ -33,7 +35,7 @@ function mathCalculation( num1,num2, op )
     
 }
 
-function Calculator(props)
+function Calculator( props )
 {
     //Set up for state of inputs
     const [newInputs, setNewInputs] = useState( {newInput1: '',newInput2:'', newOperation:'+'});
@@ -46,19 +48,18 @@ function Calculator(props)
     const updateOperation = e =>{
         setNewInputs({newInput1: newInputs.newInput1,newInput2: newInputs.newInput2, newOperation: e.target.value});
     }
-    const [result, setNewResult] = useState( 0 );
+    const [result, setNewResult] = useState( 0 );    
+  
     
-    const [ newCalculation, setNewCalculation ] = useState( {newInput1: '', newOperation: '+', newInput2: '', result: 0});
-    
-
+      
     //Defining Function for "onSubmit" form event
     const doCalculation = ( e ) => {
-        e.preventDefault();     
+        e.preventDefault();    
        
-        setNewInputs( newInputs );     
-        setNewResult(mathCalculation(newInputs.newInput1, newInputs.newInput2, newInputs.newOperation));
-        //Updating newcalculation variable to the new inputs and result 
-        setNewCalculation( newInputs, result );
+        setNewResult(mathCalculation(newInputs.newInput1, newInputs.newInput2, newInputs.newOperation));  
+
+        //adding action to add calculation performed to our store
+        props.dispatch( addNewCalculation( newInputs, result ) );
                 
         //Clear the input fields
         setNewInputs(  {newInput1: '',newInput2: '', newOperation: newInputs.newOperation} );        
@@ -90,7 +91,7 @@ function Calculator(props)
                 <br /><br />
 
                 <input type= 'submit' id='calculate'value='Result'/>
-                <p>
+                <p >
                     <strong> {result} </strong>
                 </p>
                 
@@ -100,4 +101,4 @@ function Calculator(props)
     
 }
 
-export default Calculator;
+export default connect( myStore => { return { calculations: myStore }}) ( Calculator );
